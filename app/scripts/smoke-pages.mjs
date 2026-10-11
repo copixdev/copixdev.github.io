@@ -34,7 +34,8 @@ if (!existsSync(join(dist, 'icon.png'))) fail('dist/icon.png missing');
 if (!existsSync(join(dist, 'desktop.png'))) fail('dist/desktop.png missing');
 
 const html = readFileSync(join(dist, 'index.html'), 'utf8');
-if (html.includes('/copix/')) fail('index.html still uses /copix/ base');
+const legacyProjectBase = `/${'copix'}/`;
+if (html.includes(legacyProjectBase)) fail('index.html still uses the old project base');
 if (!html.includes('src="/assets/')) fail('index.html missing /assets/ script base');
 if (!html.includes('href="/assets/')) fail('index.html missing /assets/ stylesheet base');
 if (!html.includes('href="/icon.png"')) fail('index.html missing root favicon href');
@@ -51,11 +52,11 @@ const js = readFileSync(join(assetDir, jsName), 'utf8');
 const css = readFileSync(join(assetDir, cssName), 'utf8');
 
 for (const needle of [
-	'https://github.com/copixdev/copix/releases/download/v4.3.0/Copix-4.3.0-macOS-arm64.dmg',
-	'https://github.com/copixdev/copix/releases/download/v4.3.0/Copix-4.3.0-Windows-x64.exe',
-	'https://github.com/copixdev/copix/releases/download/v4.2.0_macOS/Copix-4.2.0-macOS-arm64.dmg',
-	'https://github.com/copixdev/copix/releases/download/v4.1.0/Copix-4.1.0-Windows-x64.exe',
-	'https://github.com/copixdev/copix/releases/download/v4.0.0/Copix-Setup-4.0.0-x64.exe',
+	'https://github.com/copixdev/copix-desktop/releases/download/v4.3.0/Copix-4.3.0-macOS-arm64.dmg',
+	'https://github.com/copixdev/copix-desktop/releases/download/v4.3.0/Copix-4.3.0-Windows-x64.exe',
+	'https://github.com/copixdev/copix-desktop/releases/download/v4.2.0_macOS/Copix-4.2.0-macOS-arm64.dmg',
+	'https://github.com/copixdev/copix-desktop/releases/download/v4.1.0/Copix-4.1.0-Windows-x64.exe',
+	'https://github.com/copixdev/copix-desktop/releases/download/v4.0.0/Copix-Setup-4.0.0-x64.exe',
 	'Desktop for macOS and Windows.',
 	'Download for macOS',
 	'Download for Windows',
@@ -80,8 +81,8 @@ for (const bad of [
 	'Detected Linux',
 	'Detected Windows',
 	'EJH-BAE',
-	'copixdev/copix/refs/heads/main/cli/install.sh',
-	'copixdev/copix/refs/heads/main/cli/install.ps1',
+	'copixdev/copix-desktop/refs/heads/main/cli/install.sh',
+	'copixdev/copix-desktop/refs/heads/main/cli/install.ps1',
 ]) {
 	if (js.includes(bad)) fail(`built JS still contains "${bad}"`);
 }

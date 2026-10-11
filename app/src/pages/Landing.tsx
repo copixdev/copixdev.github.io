@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { PixelMark } from '../components/PixelMark';
 import { SiteNav } from '../components/SiteNav';
 import { useLocale } from '../lib/LocaleContext';
-import { CLI_PS, CLI_SH, DESKTOP_VERSION, GITHUB, RELEASES } from '../lib/platform';
+import { CLI_GITHUB, CLI_PS, CLI_SH, DESKTOP_VERSION, GITHUB, RELEASES } from '../lib/platform';
 import { scrollToHash } from '../lib/scroll';
 import catalog from 'virtual:copix-releases';
 
@@ -196,7 +196,7 @@ export default function Landing() {
 						<p className="command">{AFTER_INSTALL}</p>
 						<p className="install-hint">
 							{t('install.cliDocsBefore')}{' '}
-							<a className="text-link" href={`${GITHUB}/tree/main/cli`} target="_blank" rel="noreferrer">
+							<a className="text-link" href={`${CLI_GITHUB}/blob/main/README.md`} target="_blank" rel="noreferrer">
 								{t('install.cliDocsLink')}
 							</a>
 							{t('install.cliDocsAfter')}
@@ -220,7 +220,7 @@ export default function Landing() {
 						<a href={RELEASES} target="_blank" rel="noreferrer">
 							{t('footer.releases')}
 						</a>
-						<a href={`${GITHUB}/tree/main/cli`} target="_blank" rel="noreferrer">
+						<a href={`${CLI_GITHUB}/blob/main/README.md`} target="_blank" rel="noreferrer">
 							{t('footer.cliDocs')}
 						</a>
 						<a href={RELEASES} target="_blank" rel="noreferrer">

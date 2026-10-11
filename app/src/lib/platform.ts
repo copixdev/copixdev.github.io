@@ -1,4 +1,5 @@
-export const GITHUB = 'https://github.com/copixdev/copix';
+export const GITHUB = 'https://github.com/copixdev/copix-desktop';
+export const CLI_GITHUB = 'https://github.com/copixdev/copix-cli';
 export const SITE = 'https://copixdev.github.io/';
 export const RELEASES = `${GITHUB}/releases`;
 export const DESKTOP_VERSION = '4.3.0';

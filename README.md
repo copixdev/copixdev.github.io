@@ -5,10 +5,10 @@ Marketing site for **Copix Desktop** and **Copix CLI**.
 **Live:** https://copixdev.github.io/
 
 - No accounts, no Copix Web app  
-- Desktop installers from [Releases](https://github.com/copixdev/copix/releases)  
+- Desktop installers from [Releases](https://github.com/copixdev/copix-desktop/releases)  
 - Standalone CLI via `curl | bash` (macOS/Linux) and `irm | iex` (Windows) from [copix-cli](https://github.com/copixdev/copix-cli)
 
-Copix is **open source** under the [MIT License](https://github.com/copixdev/copix/blob/main/LICENSE.txt).
+Copix is **open source** under the [MIT License](https://github.com/copixdev/copix-desktop/blob/main/macOS/LICENSE.txt).
 
 ## Develop
 
