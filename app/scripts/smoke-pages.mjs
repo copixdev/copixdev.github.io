@@ -34,9 +34,11 @@ if (!existsSync(join(dist, 'icon.png'))) fail('dist/icon.png missing');
 if (!existsSync(join(dist, 'desktop.png'))) fail('dist/desktop.png missing');
 
 const html = readFileSync(join(dist, 'index.html'), 'utf8');
-if (!html.includes('/copix/assets/')) fail('index.html missing /copix/ asset base');
-if (!html.includes('href="/copix/')) fail('index.html missing /copix/ favicon or asset href');
-pass('dist/index.html uses /copix/ base');
+if (html.includes('/copix/')) fail('index.html still uses /copix/ base');
+if (!html.includes('src="/assets/')) fail('index.html missing /assets/ script base');
+if (!html.includes('href="/assets/')) fail('index.html missing /assets/ stylesheet base');
+if (!html.includes('href="/icon.png"')) fail('index.html missing root favicon href');
+pass('dist/index.html uses / base');
 
 const assetDir = join(dist, 'assets');
 const assets = existsSync(assetDir) ? readdirSync(assetDir) : [];
@@ -59,8 +61,8 @@ for (const needle of [
 	'Download for Windows',
 	'Copix Desktop',
 	'Copix CLI',
-	'cli/install.sh',
-	'cli/install.ps1',
+	'https://raw.githubusercontent.com/copixdev/copix-cli/refs/heads/main/install.sh',
+	'https://raw.githubusercontent.com/copixdev/copix-cli/refs/heads/main/install.ps1',
 	'demo-tools',
 	'demo-models',
 	'On your machine',
@@ -78,6 +80,8 @@ for (const bad of [
 	'Detected Linux',
 	'Detected Windows',
 	'EJH-BAE',
+	'copixdev/copix/refs/heads/main/cli/install.sh',
+	'copixdev/copix/refs/heads/main/cli/install.ps1',
 ]) {
 	if (js.includes(bad)) fail(`built JS still contains "${bad}"`);
 }

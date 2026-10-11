@@ -54,7 +54,7 @@ function copixReleases(): Plugin {
 
 export default defineConfig({
 	plugins: [react(), copixReleases()],
-	base: process.env.GITHUB_PAGES === 'true' ? '/copix/' : '/',
+	base: '/',
 	server: {
 		host: true,
 		port: 5173,
